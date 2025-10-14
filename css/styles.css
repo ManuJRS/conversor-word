@@ -5,7 +5,7 @@
       background: #f8fafc;
     }
     .contenedor {
-      max-width: 800px;
+      max-width: auto;
       margin: 0 auto;
       background: white;
       padding: 24px;
@@ -18,4 +18,20 @@
       border-radius: 8px;
       margin-top: 20px;
       background: #fff;
+    }
+    
+    table {
+      border-collapse: collapse;
+      margin: 16px 0;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #aaa;
+      padding: 6px 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #f2f2f2;
     }
