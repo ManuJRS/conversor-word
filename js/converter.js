@@ -2,18 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const input  = document.getElementById("input");
   const salida = document.getElementById("salida");
 
-  if (!input || !salida) {
-    console.error("Falta #input o #salida en el DOM");
-    return;
-  }
-  if (!window.mammoth) {
-    console.error("Mammoth no está cargado");
-    return;
-  }
-  if (!window.DOMPurify) {
-    console.warn("DOMPurify no está cargado. Se imprimirá sin sanitizar.");
-  }
-
   input.addEventListener("change", async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -74,19 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const container = document.createElement('div');
     container.innerHTML = clean;
-
-    container.querySelectorAll('td > table:only-child').forEach(inner => {
-      const td = inner.parentElement;
-      const outer = td.closest('table');
-      if (outer) {
-        outer.insertAdjacentElement('afterend', inner);
-        if (!td.textContent.trim() && td.children.length === 0) {
-          const tr = td.parentElement;
-          td.remove();
-          if (tr && tr.children.length === 0) tr.remove();
-        }
-      }
-    });
 
     salida.innerHTML = container.innerHTML;
 
